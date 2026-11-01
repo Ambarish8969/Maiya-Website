@@ -1,0 +1,1123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#0a0806" />
+  <meta name="description" content="Maiya माँ — a calm, doctor-verified guide from the first heartbeat to the first step." />
+  <title>MAIYA — माँ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Ambient layers -->
+  <canvas id="embers" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="#home" aria-label="Maiya home">MAIYA <span class="deva">माँ</span></a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#why-maiya">Why Maiya</a>
+      <a href="#features">The care</a>
+      <a href="#journey">Journey</a>
+      <a href="#ai-granny">AI Granny</a>
+    </nav>
+
+    <div class="header-right">
+      <span class="vol">Vol. 01</span>
+      <a class="btn-ghost" href="#contact">Contact</a>
+    </div>
+
+    <button class="menu-btn" id="mobileMenuBtn" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#why-maiya">Why Maiya</a>
+      <a href="#features">The care</a>
+      <a href="#specialists">Specialists</a>
+      <a href="#journey">Journey</a>
+      <a href="#ai-granny">AI Granny</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <!-- Side rails -->
+  <div class="rail rail-left" aria-hidden="true">Vol. 01 — From pregnancy to parenthood · <span class="deva">माँ</span></div>
+  <div class="rail rail-right">
+    <nav class="dots" aria-label="Page sections">
+      <a class="dot-nav is-active" href="#home" title="Home" data-target="home"></a>
+      <a class="dot-nav" href="#why-maiya" title="Why Maiya" data-target="why-maiya"></a>
+      <a class="dot-nav" href="#features" title="The care" data-target="features"></a>
+      <a class="dot-nav" href="#specialists" title="Specialists" data-target="specialists"></a>
+      <a class="dot-nav" href="#journey" title="Journey" data-target="journey"></a>
+      <a class="dot-nav" href="#app" title="The app" data-target="app"></a>
+      <a class="dot-nav" href="#ai-granny" title="AI Granny" data-target="ai-granny"></a>
+      <a class="dot-nav" href="#contact" title="Contact" data-target="contact"></a>
+    </nav>
+  </div>
+
+  <main>
+
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="home" data-page-section>
+      <div class="hero-mark" aria-hidden="true"><span>MAIYA</span></div>
+
+      <div class="hero-copy">
+        <div class="stage-badge"><span class="pulse-dot"></span><span id="stage-badge">In the womb • Week 4</span></div>
+
+        <h1 class="hero-title">
+          <span id="stage-title" class="fade-swap">Month 1</span>
+          <span class="deva">माँ का सफ़र</span>
+        </h1>
+
+        <p id="stage-lead" class="hero-lead fade-swap">A tiny beginning.</p>
+        <p id="stage-description" class="hero-desc fade-swap">A cluster of cells, smaller than a poppy seed, is already dividing with purpose. The primitive heart tube begins beating at 21 days.</p>
+
+        <div class="specs">
+          <div class="spec"><span>Size of</span><strong><b id="metric-fruit">Poppy Seed</b> <small id="metric-scale-hint">~0.2 cm</small></strong></div>
+          <div class="spec"><span>Weight</span><strong><b id="metric-weight">&lt; 1 g</b> <small id="metric-heart-rate">105 BPM</small></strong></div>
+          <div class="spec"><span>Milestone</span><strong id="metric-highlight">Neural tube closes</strong></div>
+        </div>
+
+        <div>
+          <div class="timeline-head">
+            <span class="mono">Growth timeline</span>
+            <button id="togglePlayBtn" type="button" class="play-btn"><span id="playIcon">❚❚</span><span id="playText">Pause tour</span></button>
+          </div>
+          <div class="stage-picker" role="group" aria-label="Choose a journey milestone">
+            <button class="stage-btn is-active" type="button" data-stage="0" aria-pressed="true">Month 1</button>
+            <button class="stage-btn" type="button" data-stage="1" aria-pressed="false">Month 4</button>
+            <button class="stage-btn" type="button" data-stage="2" aria-pressed="false">Month 7</button>
+            <button class="stage-btn" type="button" data-stage="3" aria-pressed="false">Hello</button>
+            <button class="stage-btn" type="button" data-stage="4" aria-pressed="false">First steps</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="orb">
+          <div class="orb-glow"></div>
+          <div class="orb-ring r2"></div>
+          <div class="orb-ring r1"></div>
+          <div class="orb-canvas-wrap">
+            <canvas id="fetusCanvas" title="Click or tap to see the next stage"></canvas>
+          </div>
+          <div class="orb-hud"><span class="pulse-dot"></span><span id="canvasHeartbeatStatus">Fetal heartbeat: active</span></div>
+          <div class="orb-scale">
+            <span id="canvasFruitIcon" class="icon">🌱</span>
+            <span><small>Scale</small><b id="canvasFruitName">Poppy Seed</b></span>
+          </div>
+        </div>
+
+        <div class="scrubber">
+          <div class="scrub-labels">
+            <span>Conception</span><span>Trimester 1</span><span>Trimester 2</span><span>Trimester 3</span><span>Birth</span><span>Year 1</span>
+          </div>
+          <input id="gestationSlider" type="range" min="0" max="4" step="1" value="0" aria-label="Gestation stage scrubber" />
+        </div>
+
+        <div class="counter">Heartbeats <b id="beatCount">0</b> since you arrived</div>
+      </div>
+
+      <a class="scroll-cue" href="#why-maiya" aria-label="Scroll to explore"><span>Scroll</span><i></i></a>
+    </section>
+
+    <!-- ================= TICKER ================= -->
+    <section class="ticker" aria-label="Why families trust Maiya">
+      <div class="ticker-track">
+        <span>Doctor-verified content, always</span>
+        <span>AI Granny — answers, any hour</span>
+        <span>10M+ Indian mothers trust Maiya</span>
+        <span>30M+ births guided every year</span>
+        <span>Doctor-verified content, always</span>
+        <span>AI Granny — answers, any hour</span>
+        <span>10M+ Indian mothers trust Maiya</span>
+        <span>30M+ births guided every year</span>
+      </div>
+    </section>
+
+    <!-- ================= WHY ================= -->
+    <section class="section lit" id="why-maiya" data-page-section>
+      <div class="wrap">
+        <div class="why-grid">
+          <div>
+            <p class="eyebrow reveal">Why Maiya matters <span class="deva">· क्यों</span></p>
+            <h2 class="why-statement reveal d1" style="margin-top:22px">In a country with over 30 million births every year, parenthood is often filled with <em>anxiety</em> and <em>conflicting advice.</em></h2>
+            <p class="why-body reveal d2">Families tell us the hardest part isn't the pregnancy itself — it's knowing who to trust. Maiya was built to be that one calm, scientifically verified voice in your home.</p>
+          </div>
+
+          <ul class="promises reveal d2">
+            <li><span class="n">01</span><div><strong>Doctor-verified, always</strong><p>Every article and answer is checked by real obstetricians and pediatricians, not internet guesses.</p></div></li>
+            <li><span class="n">02</span><div><strong>Personalised to your week</strong><p>Guidance that evolves as your pregnancy and child grow, never generic one-size-fits-all advice.</p></div></li>
+            <li><span class="n">03</span><div><strong>Answers at 2am too</strong><p>AI Granny and specialists are ready long after local clinics have closed their doors.</p></div></li>
+            <li><span class="n">04</span><div><strong>Built for Indian families</strong><p>Nutrition, Garbh Sanskar traditions, and ayurvedic dietary nuances that reflect how Indian households live.</p></div></li>
+          </ul>
+        </div>
+
+        <div class="stats reveal">
+          <div class="stat"><b>30M+</b><p>Births in India every single year</p></div>
+          <div class="stat"><b>52%</b><p>Of pregnant women affected by anaemia</p></div>
+          <div class="stat"><b>50%+</b><p>Of Indian households are nuclear families</p></div>
+          <div class="stat"><b>~20%</b><p>Of new mothers face postpartum depression</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FEATURES (8 crafts) ================= -->
+    <section class="section lit" id="features" data-page-section>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow reveal">What we offer</p>
+            <h2 class="display reveal d1" style="margin-top:18px">Eight kinds of <em>care</em><span class="deva">सेवा</span></h2>
+          </div>
+          <p class="lede reveal d2">Replace the chaos of WhatsApp groups and conflicting blogs with one calm, trustworthy space. Tap any card to look closer.</p>
+        </div>
+
+        <div class="crafts" id="crafts"><!-- filled by script --></div>
+      </div>
+    </section>
+
+    <!-- Detail overlay -->
+    <div class="detail" id="detail" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+      <div class="detail-card">
+        <div class="detail-art"><span id="detailGlyph">गर्भ</span></div>
+        <div class="detail-body">
+          <span class="mono" id="detailNo">01 — Guidance</span>
+          <h3 id="detailTitle">Pregnancy Guidance</h3>
+          <p id="detailText"></p>
+          <div class="specs" id="detailSpecs"></div>
+          <button class="detail-close" id="detailClose" type="button">Close · Esc</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= SPECIALISTS (index) ================= -->
+    <section class="section lit" id="specialists" data-page-section>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow reveal">Who guides you</p>
+            <h2 class="display reveal d1" style="margin-top:18px">Real <em>specialists</em><span class="deva">मार्गदर्शक</span></h2>
+          </div>
+          <p class="lede reveal d2">Maiya's content and consults are guided by a verified network of doctors and specialists across India — standing behind every answer.</p>
+        </div>
+
+        <div class="index">
+          <article class="index-row reveal"><span class="no">01</span><h3>Obstetrics &amp; Gynecology <span class="deva">प्रसूति</span></h3><p>Pregnancy care, high-risk fetal monitoring and delivery planning.</p><span class="tag">✓ Verified</span></article>
+          <article class="index-row reveal d1"><span class="no">02</span><h3>Pediatrics <span class="deva">बाल</span></h3><p>Growth charts, immunisation tracking and early childhood development.</p><span class="tag">✓ Verified</span></article>
+          <article class="index-row reveal d2"><span class="no">03</span><h3>Nutrition &amp; Lactation <span class="deva">पोषण</span></h3><p>Maternal diet, anaemia care and evidence-based breastfeeding techniques.</p><span class="tag">✓ Verified</span></article>
+          <article class="index-row reveal d3"><span class="no">04</span><h3>Mental Wellness <span class="deva">मन</span></h3><p>Postpartum recovery, perinatal anxiety, and family emotional counseling.</p><span class="tag">✓ Verified</span></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= JOURNEY ================= -->
+    <section class="section lit" id="journey" data-page-section>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow reveal">The Maiya ecosystem</p>
+            <h2 class="display reveal d1" style="margin-top:18px">One path, <em>four stages</em><span class="deva">यात्रा</span></h2>
+          </div>
+          <p class="lede reveal d2">We connect the dots between maternal health, child development, and expert care — a single thread from bud to full bloom.</p>
+        </div>
+
+        <div class="journey">
+          <article class="step is-current reveal"><div class="node">01</div><h3>Pregnancy Journey <span class="deva">गर्भावस्था</span></h3><p>Week-by-week personalised fetal guidance, kick counters, and timely reminders.</p></article>
+          <article class="step reveal d1"><div class="node">02</div><h3>Parenting Journey <span class="deva">पालन</span></h3><p>Milestone tracking, vaccination calendars, and infant nutrition support.</p></article>
+          <article class="step reveal d2"><div class="node">03</div><h3>Expert Marketplace <span class="deva">विशेषज्ञ</span></h3><p>Direct instant consults to doctors, nutritionists, and certified doulas.</p></article>
+          <article class="step reveal d3"><div class="node">04</div><h3>Family Wellness <span class="deva">परिवार</span></h3><p>Maternal mental health screening, postpartum pelvic care, and paternal guides.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= APP ================= -->
+    <section class="section lit" id="app" data-page-section>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow reveal">The Maiya app</p>
+            <h2 class="display reveal d1" style="margin-top:18px">Now in your <em>pocket</em></h2>
+          </div>
+          <p class="lede reveal d2">Track your week, ask AI Granny anything, and never miss a milestone — all from one calm home screen.</p>
+        </div>
+
+        <div class="phones" aria-label="Previews of the Maiya app">
+          <article class="phone reveal">
+            <div class="notch"></div>
+            <p class="hi">Good morning, Priya</p>
+            <h3>Week 24</h3>
+            <div class="rows">
+              <div class="row">💊 Iron &amp; folic acid — 9:00 AM</div>
+              <div class="row">🩺 Doctor consult — Friday</div>
+              <div class="row">🎵 Garbh Sanskar audio — 5 min</div>
+            </div>
+            <small>Your week, at a glance</small>
+          </article>
+
+          <article class="phone featured reveal d1">
+            <div class="notch"></div>
+            <div class="ring">Week<br />24</div>
+            <div class="bubble q">Is it normal to feel breathless this week?</div>
+            <div class="bubble a">Totally — your growing uterus is pressing slightly on your diaphragm. Try resting propped up!</div>
+            <small>Ask AI Granny, anytime</small>
+          </article>
+
+          <article class="phone reveal d2">
+            <div class="notch"></div>
+            <p class="hi">Milestones</p>
+            <h3>Month 6</h3>
+            <ul>
+              <li>First solid food introduced</li>
+              <li>Sits without support</li>
+              <li>Responds warmly to name</li>
+            </ul>
+            <small>Every milestone, celebrated</small>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= AI GRANNY ================= -->
+    <section class="section lit" id="ai-granny" data-page-section>
+      <div class="wrap granny">
+        <div class="granny-seal reveal">
+          <div class="stamp">AI<br />24/7</div>
+          <span class="big">दादी</span>
+          <div class="note">
+            <strong>AI Granny — available 24/7</strong>
+            <em>“Is it normal to feel baby kicks more at bedtime?”</em>
+          </div>
+        </div>
+
+        <div>
+          <p class="eyebrow reveal">Meet AI Granny</p>
+          <blockquote class="reveal d1">Warm, always-on answers <em>whenever you need them.</em></blockquote>
+          <p class="lede reveal d2">Like having a knowledgeable elder in your corner, available 24/7. Trained on certified OB-GYN protocols paired with timeless maternal warmth — trusted, expert-backed answers without medical jargon or scaremongering search results.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT (commission finale) ================= -->
+    <section class="section lit commission" id="contact" data-page-section>
+      <div class="wrap">
+        <p class="eyebrow reveal">Get in touch</p>
+        <h2 class="display reveal d1" style="margin-top:20px">Begin your <em>journey</em><span class="deva">शुरुआत</span></h2>
+        <p class="lede reveal d2">Have questions about Maiya? Send us a message and our team will get back to you.</p>
+
+        <form id="contactForm" class="form reveal d2">
+          <div class="field"><label for="firstName">First name <b>*</b></label><input type="text" id="firstName" required placeholder="Priya" /></div>
+          <div class="field"><label for="lastName">Last name <b>*</b></label><input type="text" id="lastName" required placeholder="Sharma" /></div>
+          <div class="field"><label for="mobileNo">Mobile no <b>*</b></label><input type="tel" id="mobileNo" required placeholder="+91 XXXXX XXXXX" /></div>
+          <div class="field"><label for="email">Email address <b>*</b></label><input type="email" id="email" required placeholder="priya@example.com" /></div>
+          <div class="field full"><label for="description">How can we help? <b>*</b></label><textarea id="description" required rows="3" placeholder="Tell us a little about where you are on the journey…"></textarea></div>
+          <div class="form-foot"><button type="submit" class="send">Send enquiry <span class="arrow">↗</span></button></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div><strong>Maiya</strong>Maternal, child development &amp; family wellness — a product of Maiya Family &amp; Health Care Solutions.</div>
+        <div><strong>Ecosystem</strong><a href="#journey">Pregnancy Journey</a><br /><a href="#journey">Parenting Journey</a><br /><a href="#specialists">Expert Marketplace</a><br /><a href="#features">Family Wellness</a></div>
+        <div><strong>Enquiries</strong><a href="mailto:rahulkamate00@gmail.com">rahulkamate00@gmail.com</a><br /><a href="tel:+918050021636">+91 80500 21636</a></div>
+        <div><strong>Vol. 01</strong>From the first heartbeat<br />to the first step</div>
+      </div>
+      <div class="footer-word" aria-hidden="true">MAIYA</div>
+      <div class="footer-bottom">
+        <span>© 2026 Maiya Family &amp; Health Care Solutions</span>
+        <a href="#home">Back to the beginning ↑</a>
+        <span>Made with ♥ for Indian families · <span class="deva">माँ</span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ===================== Stage data ===================== */
+    const stagesData = [
+      { badge: "In the womb • Week 4", title: "Month 1", lead: "A tiny beginning.", description: "A cluster of cells, smaller than a poppy seed, is already dividing with purpose. The primitive heart tube begins beating at 21 days.", fruit: "Poppy Seed", fruitIcon: "🌱", scaleHint: "~0.2 cm", weight: "< 1 g", heartRate: "105 BPM", bpm: 105, milestone: "Neural tube closes" },
+      { badge: "In the womb • Week 16", title: "Month 4", lead: "Quickening kicks.", description: "Distinct human features are forming. Tiny fingers, translucent ribs, and delicate kicks begin to stir inside the amniotic fluid.", fruit: "Avocado", fruitIcon: "🥑", scaleHint: "~11.6 cm", weight: "~100 g", heartRate: "148 BPM", bpm: 148, milestone: "Reflexes & finger suckling" },
+      { badge: "In the womb • Week 28", title: "Month 7", lead: "Eyes open to light.", description: "Your baby can recognize familiar voices, dream in REM sleep, and practice rhythmic breathing movements in a cozy cephalic curl.", fruit: "Eggplant", fruitIcon: "🍆", scaleHint: "~37.6 cm", weight: "~1,000 g", heartRate: "140 BPM", bpm: 140, milestone: "Eyelids flutter open" },
+      { badge: "Newborn • Day 1", title: "Hello", lead: "Welcome to the world.", description: "Peacefully bundled in warmth. Soft gentle breaths, the very first gaze into your eyes, and skin-to-skin heart synchrony.", fruit: "Pumpkin", fruitIcon: "🎃", scaleHint: "~50.0 cm", weight: "~3,200 g", heartRate: "128 BPM", bpm: 128, milestone: "First breath & eye contact" },
+      { badge: "Milestone • 12 months", title: "First steps", lead: "Stepping into wonder.", description: "Wobbly balance, joyful babbles, and triumphant first steps into the living room as their vibrant personality takes flight.", fruit: "Little Wonder", fruitIcon: "⭐", scaleHint: "~75.0 cm", weight: "~9.8 kg", heartRate: "100 BPM", bpm: 100, milestone: "Autonomous walking" }
+    ];
+
+    /* ===================== Features (8 crafts) ===================== */
+    const crafts = [
+      { tag: "Guidance", title: "Pregnancy Guidance", deva: "गर्भ", text: "Week-by-week, step-by-step clinical support through every trimester stage.", specs: [["Cadence", "Week by week"], ["Span", "40 weeks"], ["Reviewed by", "OB-GYNs"]] },
+      { tag: "Tracker", title: "Development Tracker", deva: "विकास", text: "Milestones, growth percentiles, and nutrition tracked month by month.", specs: [["Tracks", "Milestones"], ["Also", "Growth · Nutrition"], ["Rhythm", "Monthly"]] },
+      { tag: "Ritual", title: "Garbh Sanskar", deva: "संस्कार", text: "Mental and physical wellness rituals, guided soundscapes, and mantras for mother and child.", specs: [["Practice", "Rituals · Mantras"], ["Audio", "Soundscapes"], ["For", "Mother & child"]] },
+      { tag: "Library", title: "Video Library", deva: "ज्ञान", text: "Trusted, doctor-verified masterclasses and expert-reviewed visual lessons.", specs: [["Format", "Masterclasses"], ["Reviewed by", "Doctors"], ["Access", "On demand"]] },
+      { tag: "Consult", title: "Expert Consults", deva: "वैद्य", text: "On-demand 1:1 access to vetted gynecologists, pediatricians, and counselors.", specs: [["Format", "1 : 1"], ["Panel", "Gyn · Paeds · Counsel"], ["Access", "On demand"]] },
+      { tag: "Live", title: "Live Webinars", deva: "संवाद", text: "Interactive Q&A sessions every week with leading practitioners and lactation experts.", specs: [["Frequency", "Weekly"], ["Format", "Live Q&A"], ["Hosts", "Practitioners"]] },
+      { tag: "Together", title: "Community Support", deva: "साथ", text: "A compassionate, moderated network of parents walking the very same gestational week.", specs: [["Network", "Moderated"], ["Matched by", "Gestational week"], ["Tone", "Compassionate"]] },
+      { tag: "Always on", title: "AI Granny 24/7", deva: "दादी", text: "Warm, comforting, culturally aware answers available whenever you need them at 2am.", specs: [["Hours", "24 / 7"], ["Voice", "Culturally aware"], ["Content", "Verified AI"]], accent: true }
+    ];
+
+    const craftsEl = document.getElementById('crafts');
+    craftsEl.innerHTML = crafts.map((c, i) => `
+      <button type="button" class="craft reveal ${c.accent ? 'craft-accent' : ''} d${i % 4}" data-i="${i}">
+        <span class="craft-no">${String(i + 1).padStart(2, '0')} — ${c.tag}</span>
+        <span class="craft-glyph" aria-hidden="true">${c.deva}</span>
+        <h3>${c.title}<em>${c.deva}</em></h3>
+        <p>${c.text}</p>
+        <span class="specs">${c.specs.map(s => `<span class="spec"><span>${s[0]}</span><strong>${s[1]}</strong></span>`).join('')}</span>
+      </button>`).join('');
+
+    /* Detail overlay */
+    const detail = document.getElementById('detail');
+    let lastFocus = null;
+    function openDetail(i) {
+      const c = crafts[i];
+      const g = document.getElementById('detailGlyph');
+      g.textContent = c.deva;
+      g.style.fontSize = c.deva.length > 4 ? 'clamp(72px, 9vw, 120px)' : '';
+      document.getElementById('detailNo').textContent = `${String(i + 1).padStart(2, '0')} — ${c.tag}`;
+      document.getElementById('detailTitle').textContent = c.title;
+      document.getElementById('detailText').textContent = c.text;
+      document.getElementById('detailSpecs').innerHTML = c.specs.map(s => `<div class="spec"><span>${s[0]}</span><strong>${s[1]}</strong></div>`).join('');
+      lastFocus = document.activeElement;
+      detail.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('detailClose').focus();
+    }
+    function closeDetail() {
+      detail.classList.remove('is-open');
+      document.body.style.overflow = '';
+      if (lastFocus) lastFocus.focus();
+    }
+    craftsEl.addEventListener('click', e => {
+      const card = e.target.closest('.craft');
+      if (card) openDetail(+card.dataset.i);
+    });
+    document.getElementById('detailClose').addEventListener('click', closeDetail);
+    detail.addEventListener('click', e => { if (e.target === detail) closeDetail(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && detail.classList.contains('is-open')) closeDetail(); });
+
+    /* ===================== Fetus canvas (original animation) ===================== */
+    let currentStage = 0, targetStage = 0, transitionProgress = 1.0;
+    let autoPlayInterval = null, isPlaying = true;
+
+    const canvas = document.getElementById('fetusCanvas');
+    const ctx = canvas.getContext('2d');
+    let globalTime = 0;
+
+    const particles = Array.from({ length: 45 }, () => ({
+      x: Math.random(), y: Math.random(),
+      radius: Math.random() * 2.5 + 1.2,
+      speedX: (Math.random() - 0.5) * 0.0008,
+      speedY: (Math.random() - 0.5) * 0.0008,
+      opacity: Math.random() * 0.5 + 0.2
+    }));
+
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.resetTransform();
+      ctx.scale(dpr, dpr);
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+      function drawWombBackground(w, h, t) {
+        // Warm uterine glow
+        const grad = ctx.createRadialGradient(w * 0.5, h * 0.5, w * 0.08, w * 0.5, h * 0.5, w * 0.52);
+        grad.addColorStop(0, '#5A1E13');
+        grad.addColorStop(0.5, '#3B1209');
+        grad.addColorStop(0.85, '#220A05');
+        grad.addColorStop(1, '#150502');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, w, h);
+
+        // Ambient pulsating amniotic fluid particles
+        particles.forEach(p => {
+          p.x += p.speedX;
+          p.y += p.speedY;
+          if (p.x < 0) p.x = 1;
+          if (p.x > 1) p.x = 0;
+          if (p.y < 0) p.y = 1;
+          if (p.y > 1) p.y = 0;
+
+          const px = p.x * w;
+          const py = p.y * h;
+          const wave = Math.sin(t * 1.5 + px * 0.02) * 2;
+
+          ctx.beginPath();
+          ctx.arc(px, py + wave, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(245, 185, 160, ${p.opacity * 0.4})`;
+          ctx.fill();
+        });
+
+        // Womb border organic rim
+        ctx.beginPath();
+        ctx.arc(w * 0.5, h * 0.5, w * 0.46, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(235, 125, 95, 0.18)';
+        ctx.lineWidth = 14;
+        ctx.stroke();
+      }
+
+      // Stage 0: Embryo (Month 1 - C-Shape curved embryo, neural tube glow, beating heart tube)
+      function drawEmbryo(ctx, cx, cy, t, scale) {
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.scale(scale, scale);
+
+        // Embryonic yolk sac / gestational ring
+        ctx.beginPath();
+        ctx.arc(-24, 28, 26, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(247, 190, 165, 0.15)';
+        ctx.strokeStyle = 'rgba(255, 210, 190, 0.35)';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.fill();
+
+        // Curved C-shape body path
+        ctx.beginPath();
+        ctx.moveTo(10, -50); // head peak
+        ctx.bezierCurveTo(45, -35, 50, 15, 25, 45); // back curve
+        ctx.bezierCurveTo(10, 65, -20, 60, -25, 45); // tail bud
+        ctx.bezierCurveTo(-15, 30, -5, 35, 0, 25);
+        ctx.bezierCurveTo(8, 12, -2, -15, -15, -25); // inner tuck
+        ctx.bezierCurveTo(-25, -35, -15, -55, 10, -50); // back to head
+        ctx.closePath();
+
+        const embryoGrad = ctx.createRadialGradient(5, -10, 10, 10, 0, 50);
+        embryoGrad.addColorStop(0, '#FED4C2');
+        embryoGrad.addColorStop(0.6, '#E88B6E');
+        embryoGrad.addColorStop(1, '#A84428');
+        ctx.fillStyle = embryoGrad;
+        ctx.shadowColor = 'rgba(247, 130, 95, 0.5)';
+        ctx.shadowBlur = 18;
+        ctx.fill();
+
+        // Neural tube glow line
+        ctx.beginPath();
+        ctx.moveTo(12, -42);
+        ctx.bezierCurveTo(36, -25, 38, 15, 18, 42);
+        ctx.strokeStyle = 'rgba(255, 240, 220, 0.5)';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        // Pulsating primitive heart tube
+        const heartPulse = Math.sin(t * 7) * 2 + 5;
+        ctx.beginPath();
+        ctx.arc(2, 5, heartPulse, 0, Math.PI * 2);
+        ctx.fillStyle = '#FF5238';
+        ctx.shadowColor = '#FF3B20';
+        ctx.shadowBlur = 15;
+        ctx.fill();
+
+        // Limb bud hints
+        ctx.beginPath();
+        ctx.ellipse(8, 20, 6, 4, 0.4, 0, Math.PI * 2);
+        ctx.fillStyle = '#ECA38A';
+        ctx.fill();
+
+        ctx.restore();
+      }
+
+      // Stage 1: Month 4 Fetus (distinct limbs, head, floating umbilical cord)
+      function drawFetusMonth4(ctx, cx, cy, t, scale) {
+        ctx.save();
+        ctx.translate(cx, cy + Math.sin(t * 1.5) * 6);
+        ctx.scale(scale, scale);
+
+        // Umbilical cord
+        ctx.beginPath();
+        ctx.moveTo(-10, 15);
+        ctx.bezierCurveTo(-45, 30, -70, -20, -110, 20);
+        ctx.strokeStyle = 'rgba(235, 140, 115, 0.65)';
+        ctx.lineWidth = 5;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+
+        // Fetal Body
+        // Head
+        ctx.beginPath();
+        ctx.arc(20, -50, 32, 0, Math.PI * 2);
+        const skinGrad = ctx.createRadialGradient(25, -55, 8, 20, -50, 38);
+        skinGrad.addColorStop(0, '#FFE3D6');
+        skinGrad.addColorStop(0.7, '#EDA188');
+        skinGrad.addColorStop(1, '#B95D41');
+        ctx.fillStyle = skinGrad;
+        ctx.shadowColor = 'rgba(224, 110, 75, 0.35)';
+        ctx.shadowBlur = 16;
+        ctx.fill();
+
+        // Eye crease (closed)
+        ctx.beginPath();
+        ctx.arc(36, -50, 6, 0.2, Math.PI * 0.85);
+        ctx.strokeStyle = 'rgba(150, 60, 40, 0.7)';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Torso / Back
+        ctx.beginPath();
+        ctx.moveTo(12, -22);
+        ctx.bezierCurveTo(45, 0, 40, 45, 10, 55); // Back
+        ctx.bezierCurveTo(-15, 60, -35, 45, -30, 25); // Buttocks
+        ctx.bezierCurveTo(-25, 5, -15, -10, 8, -20); // Front
+        ctx.closePath();
+        ctx.fillStyle = skinGrad;
+        ctx.fill();
+
+        // Curled Arms / Hand brought near chin
+        ctx.beginPath();
+        ctx.moveTo(5, -10);
+        ctx.quadraticCurveTo(28, -5, 26, -32);
+        ctx.strokeStyle = '#EDA188';
+        ctx.lineWidth = 9;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+
+        // Tiny hand
+        ctx.beginPath();
+        ctx.arc(26, -35, 5, 0, Math.PI * 2);
+        ctx.fillStyle = '#FFE3D6';
+        ctx.fill();
+
+        // Curled legs and little foot
+        ctx.beginPath();
+        ctx.moveTo(-15, 42);
+        ctx.quadraticCurveTo(15, 50, 10, 22);
+        ctx.strokeStyle = '#EDA188';
+        ctx.lineWidth = 10;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+
+        // Foot
+        ctx.beginPath();
+        ctx.ellipse(12, 16, 6, 4, -0.4, 0, Math.PI * 2);
+        ctx.fillStyle = '#FFE3D6';
+        ctx.fill();
+
+        // Heart pulse inside chest
+        const heartP = Math.sin(t * 8) * 1.5 + 4;
+        ctx.beginPath();
+        ctx.arc(8, -2, heartP, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 75, 60, 0.8)';
+        ctx.shadowColor = '#FF4530';
+        ctx.shadowBlur = 12;
+        ctx.fill();
+
+        ctx.restore();
+      }
+
+      // Stage 2: Month 7 Late Fetus (Plump, rhythmic chest expansion, peaceful womb posture)
+      function drawFetusMonth7(ctx, cx, cy, t, scale) {
+        ctx.save();
+        ctx.translate(cx, cy + Math.sin(t * 1.2) * 5);
+        ctx.scale(scale, scale);
+
+        const chestBreath = Math.sin(t * 2.2) * 3; // Simulated practice breathing motion
+
+        // Thick umbilical cord
+        ctx.beginPath();
+        ctx.moveTo(0, 25);
+        ctx.bezierCurveTo(-40, 50, -80, -10, -135, 10);
+        ctx.strokeStyle = 'rgba(240, 140, 115, 0.7)';
+        ctx.lineWidth = 8;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+
+        const babyGrad = ctx.createRadialGradient(15, -45, 10, 10, -35, 60);
+        babyGrad.addColorStop(0, '#FFE8DD');
+        babyGrad.addColorStop(0.7, '#ECA28B');
+        babyGrad.addColorStop(1, '#BA5A3E');
+
+        // Large rounded head (in head-tucked posture)
+        ctx.beginPath();
+        ctx.arc(10, -65, 44, 0, Math.PI * 2);
+        ctx.fillStyle = babyGrad;
+        ctx.shadowColor = 'rgba(215, 95, 60, 0.4)';
+        ctx.shadowBlur = 20;
+        ctx.fill();
+
+        // Peaceful closed eye with lashes
+        ctx.beginPath();
+        ctx.arc(32, -66, 8, 0.25, Math.PI * 0.8);
+        ctx.strokeStyle = 'rgba(130, 48, 30, 0.85)';
+        ctx.lineWidth = 2.4;
+        ctx.stroke();
+
+        // Baby nose and cute lips
+        ctx.beginPath();
+        ctx.arc(46, -60, 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(180, 70, 50, 0.7)';
+        ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(38, -50);
+        ctx.quadraticCurveTo(43, -48, 38, -46);
+        ctx.strokeStyle = 'rgba(160, 60, 45, 0.8)';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Chubby body & chest with breathing cycle
+        ctx.beginPath();
+        ctx.moveTo(0, -30);
+        ctx.bezierCurveTo(45 + chestBreath, -10, 45 + chestBreath, 45, 15, 65); // Chest & tummy
+        ctx.bezierCurveTo(-25, 75, -55, 45, -45, 15); // Back
+        ctx.bezierCurveTo(-38, -15, -20, -28, 0, -30);
+        ctx.closePath();
+        ctx.fillStyle = babyGrad;
+        ctx.fill();
+
+        // Chubby arm resting on cheek
+        ctx.beginPath();
+        ctx.moveTo(-10, -10);
+        ctx.quadraticCurveTo(24, 0, 26, -42);
+        ctx.strokeStyle = '#ECA28B';
+        ctx.lineWidth = 15;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+
+        // Little clenched hand
+        ctx.beginPath();
+        ctx.arc(28, -44, 8, 0, Math.PI * 2);
+        ctx.fillStyle = '#FFE8DD';
+        ctx.fill();
+
+        // Chubby curled leg
+        ctx.beginPath();
+        ctx.moveTo(-25, 45);
+        ctx.quadraticCurveTo(20, 65, 15, 20);
+        ctx.strokeStyle = '#ECA28B';
+        ctx.lineWidth = 16;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+
+        // Cute foot with distinct toes
+        ctx.beginPath();
+        ctx.ellipse(18, 12, 10, 7, -0.3, 0, Math.PI * 2);
+        ctx.fillStyle = '#FFE8DD';
+        ctx.fill();
+
+        // Radiating strong heart pulse
+        const heartPulse = Math.sin(t * 7.5) * 2 + 5;
+        ctx.beginPath();
+        ctx.arc(12, -4, heartPulse, 0, Math.PI * 2);
+        ctx.fillStyle = '#FF452A';
+        ctx.shadowColor = '#FF3B20';
+        ctx.shadowBlur = 16;
+        ctx.fill();
+
+        ctx.restore();
+      }
+
+      // Stage 3: Hello (Newborn baby swaddled gently, breathing softly)
+      function drawNewbornBaby(ctx, cx, cy, t, scale) {
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.scale(scale, scale);
+
+        const breath = Math.sin(t * 2) * 3;
+
+        // Swaddle blanket base
+        ctx.beginPath();
+        ctx.ellipse(0, 20, 75, 95 + breath, 0.1, 0, Math.PI * 2);
+        const blanketGrad = ctx.createRadialGradient(-10, 10, 15, 0, 20, 95);
+        blanketGrad.addColorStop(0, '#FFF5EF');
+        blanketGrad.addColorStop(0.65, '#F6D9CA');
+        blanketGrad.addColorStop(1, '#D89E86');
+        ctx.fillStyle = blanketGrad;
+        ctx.shadowColor = 'rgba(210, 100, 70, 0.35)';
+        ctx.shadowBlur = 20;
+        ctx.fill();
+
+        // Blanket wrap fold folds
+        ctx.beginPath();
+        ctx.moveTo(-60, 0);
+        ctx.quadraticCurveTo(0, 45, 65, 10);
+        ctx.strokeStyle = 'rgba(185, 110, 85, 0.45)';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(-50, 40);
+        ctx.quadraticCurveTo(10, 75, 55, 55);
+        ctx.strokeStyle = 'rgba(185, 110, 85, 0.35)';
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+
+        // Baby head
+        ctx.beginPath();
+        ctx.arc(0, -60, 42, 0, Math.PI * 2);
+        const babySkin = ctx.createRadialGradient(-5, -65, 8, 0, -60, 45);
+        babySkin.addColorStop(0, '#FFF0E8');
+        babySkin.addColorStop(0.7, '#EDB29E');
+        babySkin.addColorStop(1, '#C96E52');
+        ctx.fillStyle = babySkin;
+        ctx.fill();
+
+        // Cozy cap or head fold
+        ctx.beginPath();
+        ctx.arc(0, -66, 43, Math.PI * 0.9, Math.PI * 2.1);
+        ctx.strokeStyle = '#F7DFD2';
+        ctx.lineWidth = 6;
+        ctx.stroke();
+
+        // Sleeping eyes (peaceful arcs)
+        ctx.beginPath();
+        ctx.arc(-14, -58, 6, 0.2, Math.PI * 0.85);
+        ctx.arc(14, -58, 6, 0.2, Math.PI * 0.85);
+        ctx.strokeStyle = 'rgba(120, 50, 35, 0.8)';
+        ctx.lineWidth = 2.2;
+        ctx.stroke();
+
+        // Rosy cheeks
+        ctx.beginPath();
+        ctx.arc(-22, -50, 7, 0, Math.PI * 2);
+        ctx.arc(22, -50, 7, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 100, 80, 0.25)';
+        ctx.fill();
+
+        // Tiny baby mouth
+        ctx.beginPath();
+        ctx.arc(0, -44, 3, 0, Math.PI);
+        ctx.fillStyle = 'rgba(160, 60, 45, 0.7)';
+        ctx.fill();
+
+        // Tiny hand peeking out of swaddle
+        ctx.beginPath();
+        ctx.arc(-15, -12 + breath * 0.5, 7, 0, Math.PI * 2);
+        ctx.fillStyle = '#FFEBE2';
+        ctx.fill();
+
+        ctx.restore();
+      }
+
+      // Stage 4: First Steps (Cute animated toddler taking steps)
+      function drawToddlerWalking(ctx, cx, cy, t, scale) {
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.scale(scale, scale);
+
+        const walkCycle = Math.sin(t * 4);
+        const bob = Math.abs(Math.cos(t * 4)) * 6;
+
+        // Toddler Head
+        ctx.beginPath();
+        ctx.arc(0, -65 - bob, 38, 0, Math.PI * 2);
+        const skin = ctx.createRadialGradient(0, -70 - bob, 10, 0, -65 - bob, 40);
+        skin.addColorStop(0, '#FFF2EC');
+        skin.addColorStop(0.75, '#EDB5A3');
+        skin.addColorStop(1, '#CD7358');
+        ctx.fillStyle = skin;
+        ctx.shadowColor = 'rgba(210, 95, 60, 0.3)';
+        ctx.shadowBlur = 18;
+        ctx.fill();
+
+        // Joyful smiling eyes & smile
+        ctx.beginPath();
+        ctx.arc(-13, -66 - bob, 5, 0.2, Math.PI * 0.85);
+        ctx.arc(13, -66 - bob, 5, 0.2, Math.PI * 0.85);
+        ctx.strokeStyle = 'rgba(110, 40, 25, 0.85)';
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+
+        // Joyful wide smile
+        ctx.beginPath();
+        ctx.arc(0, -54 - bob, 8, 0.15, Math.PI * 0.85);
+        ctx.strokeStyle = 'rgba(160, 50, 35, 0.85)';
+        ctx.lineWidth = 2.2;
+        ctx.stroke();
+
+        // Toddler onesie / shirt
+        ctx.beginPath();
+        ctx.ellipse(0, -15 - bob, 34, 40, 0, 0, Math.PI * 2);
+        const shirtGrad = ctx.createLinearGradient(0, -45 - bob, 0, 15 - bob);
+        shirtGrad.addColorStop(0, '#FFE8D6');
+        shirtGrad.addColorStop(1, '#ECA28B');
+        ctx.fillStyle = shirtGrad;
+        ctx.fill();
+
+        // Triumphant outstretched arms (balancing!)
+        // Left arm
+        ctx.beginPath();
+        ctx.moveTo(-25, -25 - bob);
+        ctx.quadraticCurveTo(-55, -45 - bob + walkCycle * 6, -60, -35 - bob);
+        ctx.strokeStyle = '#EDB5A3';
+        ctx.lineWidth = 11;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(-62, -35 - bob, 6, 0, Math.PI * 2);
+        ctx.fillStyle = '#FFF2EC';
+        ctx.fill();
+
+        // Right arm
+        ctx.beginPath();
+        ctx.moveTo(25, -25 - bob);
+        ctx.quadraticCurveTo(55, -45 - bob - walkCycle * 6, 60, -35 - bob);
+        ctx.strokeStyle = '#EDB5A3';
+        ctx.lineWidth = 11;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(62, -35 - bob, 6, 0, Math.PI * 2);
+        ctx.fillStyle = '#FFF2EC';
+        ctx.fill();
+
+        // Stepping little legs
+        // Left Leg
+        const leftLegOffset = walkCycle * 16;
+        ctx.beginPath();
+        ctx.moveTo(-16, 12 - bob);
+        ctx.lineTo(-20 + leftLegOffset * 0.5, 45 - bob - Math.max(0, walkCycle * 8));
+        ctx.strokeStyle = '#EDB5A3';
+        ctx.lineWidth = 12;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+
+        // Left baby shoe
+        ctx.beginPath();
+        ctx.ellipse(-22 + leftLegOffset * 0.5, 52 - bob - Math.max(0, walkCycle * 8), 10, 6, 0.1, 0, Math.PI * 2);
+        ctx.fillStyle = '#D46A43';
+        ctx.fill();
+
+        // Right Leg
+        const rightLegOffset = -walkCycle * 16;
+        ctx.beginPath();
+        ctx.moveTo(16, 12 - bob);
+        ctx.lineTo(20 + rightLegOffset * 0.5, 45 - bob - Math.max(0, -walkCycle * 8));
+        ctx.strokeStyle = '#EDB5A3';
+        ctx.lineWidth = 12;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+
+        // Right baby shoe
+        ctx.beginPath();
+        ctx.ellipse(22 + rightLegOffset * 0.5, 52 - bob - Math.max(0, -walkCycle * 8), 10, 6, -0.1, 0, Math.PI * 2);
+        ctx.fillStyle = '#D46A43';
+        ctx.fill();
+
+        // Little milestone twinkle stars around toddler
+        for (let i = 0; i < 4; i++) {
+          const starAngle = t * 1.5 + (i * Math.PI) / 2;
+          const sx = Math.cos(starAngle) * 85;
+          const sy = Math.sin(starAngle) * 50 - 40;
+          ctx.beginPath();
+          ctx.arc(sx, sy, 3 + Math.sin(t * 4 + i) * 1.5, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(255, 230, 160, 0.7)';
+          ctx.fill();
+        }
+
+        ctx.restore();
+      }
+
+    function renderLoop() {
+      globalTime += 0.025;
+      const w = canvas.clientWidth, h = canvas.clientHeight;
+      drawWombBackground(w, h, globalTime);
+      const cx = w * 0.5, cy = h * 0.5;
+      const k = Math.min(w, h) / 480; // keep the baby proportional on small screens
+
+      if (currentStage !== targetStage) {
+        transitionProgress += 0.06;
+        if (transitionProgress >= 1.0) { transitionProgress = 1.0; currentStage = targetStage; }
+      }
+
+      const renderStage = (i, t, alpha, s) => {
+        ctx.globalAlpha = alpha;
+        s *= k;
+        switch (i) {
+          case 0: drawEmbryo(ctx, cx, cy, t, 1.15 * s); break;
+          case 1: drawFetusMonth4(ctx, cx, cy, t, 1.25 * s); break;
+          case 2: drawFetusMonth7(ctx, cx, cy, t, 1.35 * s); break;
+          case 3: drawNewbornBaby(ctx, cx, cy, t, 1.2 * s); break;
+          case 4: drawToddlerWalking(ctx, cx, cy, t, 1.15 * s); break;
+        }
+        ctx.globalAlpha = 1.0;
+      };
+
+      if (currentStage === targetStage) {
+        renderStage(currentStage, globalTime, 1.0, 1.0);
+      } else {
+        renderStage(currentStage, globalTime, 1.0 - transitionProgress, 1.0 - transitionProgress * 0.15);
+        renderStage(targetStage, globalTime, transitionProgress, 0.85 + transitionProgress * 0.15);
+      }
+      requestAnimationFrame(renderLoop);
+    }
+    requestAnimationFrame(renderLoop);
+
+    const slider = document.getElementById('gestationSlider');
+    function paintSlider(i) { slider.style.setProperty('--fill', (i / 4 * 100) + '%'); }
+    paintSlider(0);
+
+    function setStage(index, smooth = true) {
+      index = Math.max(0, Math.min(stagesData.length - 1, parseInt(index)));
+      if (targetStage === index && smooth) return;
+      targetStage = index;
+      transitionProgress = 0.0;
+      const info = stagesData[index];
+      const swaps = document.querySelectorAll('.fade-swap');
+      swaps.forEach(el => el.classList.add('is-out'));
+
+      setTimeout(() => {
+        document.getElementById('stage-badge').textContent = info.badge;
+        document.getElementById('stage-title').textContent = info.title;
+        document.getElementById('stage-lead').textContent = info.lead;
+        document.getElementById('stage-description').textContent = info.description;
+        document.getElementById('metric-fruit').textContent = info.fruit;
+        document.getElementById('metric-scale-hint').textContent = info.scaleHint;
+        document.getElementById('metric-weight').textContent = info.weight;
+        document.getElementById('metric-heart-rate').textContent = info.heartRate;
+        document.getElementById('metric-highlight').textContent = info.milestone;
+        document.getElementById('canvasFruitIcon').textContent = info.fruitIcon;
+        document.getElementById('canvasFruitName').textContent = info.fruit;
+        document.getElementById('canvasHeartbeatStatus').textContent = index >= 3 ? 'Vitality: active & thriving' : `Fetal heartbeat: ~${info.heartRate}`;
+        swaps.forEach(el => el.classList.remove('is-out'));
+      }, 260);
+
+      document.querySelectorAll('.stage-btn').forEach((btn, i) => {
+        btn.classList.toggle('is-active', i === index);
+        btn.setAttribute('aria-pressed', i === index ? 'true' : 'false');
+      });
+      slider.value = index;
+      paintSlider(index);
+    }
+
+    document.querySelectorAll('.stage-btn').forEach(b => b.addEventListener('click', () => { setStage(+b.dataset.stage); pauseAutoPlay(); }));
+    slider.addEventListener('input', e => { setStage(+e.target.value); pauseAutoPlay(); });
+    canvas.addEventListener('click', () => { setStage((targetStage + 1) % stagesData.length); pauseAutoPlay(); });
+
+    function startAutoPlay() {
+      clearInterval(autoPlayInterval);
+      autoPlayInterval = setInterval(() => setStage((targetStage + 1) % stagesData.length), 5200);
+      isPlaying = true;
+      document.getElementById('playIcon').textContent = '❚❚';
+      document.getElementById('playText').textContent = 'Pause tour';
+    }
+    function pauseAutoPlay() {
+      clearInterval(autoPlayInterval);
+      autoPlayInterval = null;
+      isPlaying = false;
+      document.getElementById('playIcon').textContent = '▶';
+      document.getElementById('playText').textContent = 'Play tour';
+    }
+    document.getElementById('togglePlayBtn').addEventListener('click', () => isPlaying ? pauseAutoPlay() : startAutoPlay());
+    startAutoPlay();
+
+    /* Heartbeat counter (like Kibori's "Kindling" counter) */
+    let beats = 0;
+    const beatEl = document.getElementById('beatCount');
+    let lastBeat = performance.now();
+    (function tickBeats(now) {
+      const interval = 60000 / stagesData[targetStage].bpm;
+      if (now - lastBeat >= interval) { beats++; lastBeat = now; beatEl.textContent = beats.toLocaleString('en-IN'); }
+      requestAnimationFrame(tickBeats);
+    })(performance.now());
+
+    /* ===================== Ember background ===================== */
+    const emberCanvas = document.getElementById('embers');
+    const ectx = emberCanvas.getContext('2d');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let embers = [], ew = 0, eh = 0;
+    function sizeEmbers() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      ew = window.innerWidth; eh = window.innerHeight;
+      emberCanvas.width = ew * dpr; emberCanvas.height = eh * dpr;
+      ectx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const count = Math.round(Math.min(90, ew / 16));
+      embers = Array.from({ length: count }, () => spawnEmber(true));
+    }
+    function spawnEmber(anywhere) {
+      return {
+        x: Math.random() * ew,
+        y: anywhere ? Math.random() * eh : eh + 10,
+        r: Math.random() * 1.6 + 0.4,
+        vy: Math.random() * 0.45 + 0.15,
+        sway: Math.random() * Math.PI * 2,
+        life: Math.random() * 0.6 + 0.4
+      };
+    }
+    let scrollBoost = 0, lastY = window.scrollY;
+    window.addEventListener('scroll', () => {
+      scrollBoost = Math.min(4, scrollBoost + Math.abs(window.scrollY - lastY) * 0.02);
+      lastY = window.scrollY;
+    }, { passive: true });
+    function drawEmbers() {
+      ectx.clearRect(0, 0, ew, eh);
+      embers.forEach((p, i) => {
+        p.y -= p.vy * (1 + scrollBoost);
+        p.sway += 0.01;
+        p.x += Math.sin(p.sway) * 0.3;
+        if (p.y < -10) embers[i] = spawnEmber(false);
+        const fade = Math.min(1, p.y / eh + 0.2) * p.life;
+        const g = ectx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 6);
+        g.addColorStop(0, `rgba(255, 190, 120, ${0.9 * fade})`);
+        g.addColorStop(0.3, `rgba(240, 120, 60, ${0.35 * fade})`);
+        g.addColorStop(1, 'rgba(240, 120, 60, 0)');
+        ectx.fillStyle = g;
+        ectx.beginPath(); ectx.arc(p.x, p.y, p.r * 6, 0, Math.PI * 2); ectx.fill();
+      });
+      scrollBoost *= 0.94;
+      if (!reduceMotion) requestAnimationFrame(drawEmbers);
+    }
+    window.addEventListener('resize', sizeEmbers);
+    sizeEmbers();
+    drawEmbers();
+
+    /* ===================== Header, menu, reveals, dots ===================== */
+    const header = document.getElementById('siteHeader');
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileBtn.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('is-open');
+      mobileBtn.setAttribute('aria-expanded', open);
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileMenu.classList.remove('is-open');
+      mobileBtn.setAttribute('aria-expanded', 'false');
+    }));
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          en.target.classList.add(en.target.classList.contains('lit') ? 'is-lit' : 'is-in');
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal, .lit').forEach(el => io.observe(el));
+
+    const sections = document.querySelectorAll('[data-page-section]');
+    const dots = document.querySelectorAll('.dot-nav');
+    function onScroll() {
+      header.classList.toggle('is-scrolled', window.scrollY > 30);
+      let current = 'home';
+      sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - window.innerHeight * 0.4) current = sec.id; });
+      dots.forEach(d => d.classList.toggle('is-active', d.dataset.target === current));
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ===================== Contact form (mailto) ===================== */
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const v = id => document.getElementById(id).value.trim();
+      const subject = encodeURIComponent(`Maiya Website Enquiry: ${v('firstName')} ${v('lastName')}`);
+      const body = encodeURIComponent(
+        `Hello Maiya Team,\n\nYou have received a new enquiry from the website:\n\n` +
+        `Name: ${v('firstName')} ${v('lastName')}\nMobile: ${v('mobileNo')}\nEmail: ${v('email')}\n\n` +
+        `Description:\n${v('description')}\n\n---`
+      );
+      window.location.href = `mailto:rahulkamate00@gmail.com?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
